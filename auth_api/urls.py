@@ -34,13 +34,3 @@ urlpatterns = [
     path("doc/redoc", SpectacularRedocView.as_view(), name="redoc"),
 ]
 
-
-# superuser: j.akpa@yahoo.com
-# password: 123456
-# {
-#   "username": "Kingteddy",
-#   "email": "jakpaetuk@gmail.com",
-#   "password": "Holycraft@30",
-#   "first_name": "Jon",
-#   "last_name": "Doe"
-# }
