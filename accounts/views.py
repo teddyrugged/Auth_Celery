@@ -20,7 +20,7 @@ class RegisterView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
-        return Response(build_response(True, "User registered successfully"), status=response.status_code)
+        return Response(build_response(True, "A Token has been sent to your Email"), status=response.status_code)
 
 
 class LoginView(generics.GenericAPIView):

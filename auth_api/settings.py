@@ -116,25 +116,18 @@ SIMPLE_JWT = {
 
 
 
-# DATABASES = {
-#     "default": {
-#         "NAME": config("DB_NAME"),
-#         "ENGINE": config("DB_ENGINE"),
-#         "HOST": config("DB_HOST"),
-#         "PASSWORD": config("DB_PASSWORD"),
-#         "USER": config("DB_USER"),
-#         "PORT": config("DB_PORT"),
-        
-#     }
-# }
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "NAME": config("DB_NAME"),
+        "ENGINE": config("DB_ENGINE"),
+        "HOST": config("DB_HOST"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "USER": config("DB_USER"),
+        "PORT": config("DB_PORT"),
+        
     }
 }
+
 
 
 CELERY_BROKER_URL = config("CELERY_BROKER_URL")
@@ -208,6 +201,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jakpaetuk@gmail.com'
-EMAIL_HOST_PASSWORD = 'pfce hojs llfe grrm'  # not your Gmail password
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')  # your Gmail address
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')  # not your Gmail password
 EMAIL_USE_SSL = False
+
+
+
+
+
+
+

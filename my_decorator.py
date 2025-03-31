@@ -1,38 +1,32 @@
-# my_decorator.py
 from functools import wraps
-from typing import Callable, Dict
 
-# Dictionary to store call counts
-_call_counts: Dict[str, int] = {}
-
-def count_calls(func: Callable) -> Callable:
+def count_calls(func):
     """
-    Decorator to count and print how many times a function is called.
-    Each function is counted separately.
+    Decorator that counts how many times the decorated function was called.
+    Prints the count each time the function is executed.
     """
+    call_count = 0
+    
     @wraps(func)
     def wrapper(*args, **kwargs):
-        name = func.__name__
-        _call_counts[name] = _call_counts.get(name, 0) + 1
-        print(f"{name} has been called {_call_counts[name]} times")
+        nonlocal call_count
+        call_count += 1
+        print(f"Function '{func.__name__}' has been called {call_count} times")
         return func(*args, **kwargs)
-
+    
     return wrapper
 
-
-# Example usage
+# Example usage:
 if __name__ == "__main__":
-
     @count_calls
-    def greet(name):
-        print(f"Hello, {name}!")
-
+    def example_function():
+        print("Hello from example_function")
+    
     @count_calls
-    def add(x, y):
-        return x + y
-
-    greet("Alice")
-    greet("Bob")
-    greet("Charlie")
-    print(add(2, 3))
-    print(add(5, 7))
+    def another_function():
+        print("Hello from another_function")
+    
+    example_function()
+    example_function()
+    another_function()
+    example_function()
